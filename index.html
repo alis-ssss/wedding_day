@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алиса и Павел | 06.06.2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Базовые стили и переменные цветов - оливковая гамма */
+        :root {
+            --olive-deep: #5A6B4A;     /* Глубокий оливковый */
+            --olive: #6B7F55;           /* Оливковый */
+            --olive-light: #8A9A6E;      /* Светлый оливковый */
+            --sage: #9DAD7F;             /* Шалфей */
+            --beige-medium: #D6C5B0;      /* Средний бежевый */
+            --beige-dark: #C8B69C;       /* Темный бежевый */
+            --chocolate: #8B7A62;        /* Шоколадный */
+            --dusty-rose: #cfa0a0;        /* Пыльно-розовый */
+            --rose-soft: #e3bbbb;         /* Мягкий розовый */
+            --cream: #F5EFE0;             /* Кремовый для акцентов */
+            --white: #FFFFFF;
+            --text-light: #F5F5F5;         /* Светлый текст */
+            --text-soft: #E0E0E0;          /* Мягкий светлый текст */
+            
+            --dark-gray: #2C3E3A;
+            --envelope-green: #5A6B4A;
+            --envelope-light: #6B7F55;
+            --transition: all 0.4s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, var(--olive-deep), var(--olive));
+            position: relative;
+        }
+
+        /* Текстурный фон */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 30%),
+                repeating-linear-gradient(45deg, 
+                    rgba(255, 255, 255, 0.02) 0px, 
+                    rgba(255, 255, 255, 0.02) 2px,
+                    transparent 2px, 
+                    transparent 8px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        h1, h2, h3, .cursive {
+            font-family: 'Great Vibes', cursive;
+            font-weight: normal;
+            color: var(--cream);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 50px;
+            color: var(--cream);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--dusty-rose), transparent);
+        }
+
+        .btn {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            color: var(--text-light);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-rose {
+            background: rgba(212, 165, 165, 0.2);
+            border-color: rgba(212, 165, 165, 0.4);
+        }
+
+        .btn-rose:hover {
+            background: rgba(212, 165, 165, 0.3);
+        }
+
+        /* ===== СТИЛИ ДЛЯ КОНВЕРТА ===== */
+        .envelope-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(215, 228, 207, 0.85); /* Более темный фон */
+            backdrop-filter: blur(14px); /* Сильное размытие */
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        .envelope-wrapper.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .envelope {
+            width: 400px;
+            height: 300px;
+            background: linear-gradient(145deg, var(--envelope-green), var(--envelope-light));
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6); /* Более темная тень */
+            border-radius: 8px;
+            transition: transform 0.3s;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .envelope:hover {
+            transform: scale(1.02);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            border-left: 200px solid transparent;
+            border-right: 200px solid transparent;
+            border-top: 120px solid var(--envelope-light);
+            border-radius: 8px 8px 0 0;
+            transform-origin: top;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 3;
+        }
+
+        .envelope.open .envelope-flap {
+            transform: rotateX(180deg);
+            pointer-events: none;
+        }
+
+        .envelope-body {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 85%;
+            background: linear-gradient(145deg, var(--envelope-green), var(--envelope-light));
+            border-radius: 0 0 8px 8px;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .envelope-body::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: inherit;
+            transform: skewY(2deg);
+        }
+
+        .envelope-mask {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2); /* Затемнение маски */
+            clip-path: polygon(0 0, 100% 0, 90% 100%, 10% 100%);
+            z-index: 2;
+        }
+
+        .envelope-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 10;
+            pointer-events: none;
+            width: 80%;
+        }
+
+        .envelope-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            color: white;
+        }
+
+        .envelope-content p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+
+        .envelope-content .open-text {
+            margin-top: 20px;
+            font-size: 1rem;
+            opacity: 0.9;
+            animation: pulse 2s infinite;
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .letter-preview {
+            position: absolute;
+            bottom: 15px;
+            left: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 20px;
+            border-radius: 8px;
+            color: var(--dark-gray);
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+            z-index: 5;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .envelope.open .letter-preview {
+            transform: translateY(0);
+        }
+
+        .letter-preview h4 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: var(--olive-deep);
+            margin-bottom: 10px;
+        }
+
+        .letter-preview p {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+        }
+
+        .letter-preview .small-heart {
+            display: inline-block;
+            color: var(--dusty-rose);
+            font-size: 1.2rem;
+            margin-left: 5px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .invitation-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--dusty-rose);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transform: rotate(5deg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .envelope-decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .envelope-decoration i {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1.5rem;
+        }
+
+        .envelope-decoration i:nth-child(1) { top: 20px; left: 30px; transform: rotate(-15deg); }
+        .envelope-decoration i:nth-child(2) { top: 20px; right: 30px; transform: rotate(15deg); }
+        .envelope-decoration i:nth-child(3) { bottom: 30px; left: 40px; transform: rotate(10deg); }
+        .envelope-decoration i:nth-child(4) { bottom: 30px; right: 40px; transform: rotate(-10deg); }
+
+        /* Затемнение основного контента пока конверт закрыт */
+        .main-content.blurred {
+            filter: blur(8px); /* Более сильное размытие основного контента */
+            pointer-events: none;
+            user-select: none;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* ===== ГЛАВНАЯ СТРАНИЦА ===== */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding: 0 0 30px 0;
+            /* Фото без надписей */
+            background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)),url('images/my0.jpg') no-repeat center center/cover;
+            background-attachment: scroll;
+        }
+
+        /* Блок с именами и датой - прямо на фото, без фона */
+        .hero-names-block {
+            text-align: center;
+            padding: 0;
+            margin-bottom: 30px;
+            max-width: 800px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 7rem;
+            color: var(--cream);
+            line-height: 1.1;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-date {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: var(--rose-soft);
+            position: relative;
+            display: inline-block;
+            padding: 0 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-date::before,
+        .hero-date::after {
+            content: '❧';
+            font-size: 2.5rem;
+            color: var(--cream);
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-date::before {
+            left: -20px;
+        }
+
+        .hero-date::after {
+            right: -20px;
+        }
+
+        /* Отсчет времени в блоке истории */
+        .countdown-section {
+            text-align: center;
+            padding: 40px 0 20px;
+        }
+
+        .countdown-label {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--text-soft);
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .countdown-label i {
+            color: var(--dusty-rose);
+            margin: 0 5px;
+        }
+
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px auto;
+            flex-wrap: wrap;
+        }
+
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 10px;
+            padding: 15px 10px;
+            min-width: 80px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .countdown-box span {
+            display: block;
+            font-weight: 600;
+        }
+
+        .countdown-number {
+            font-size: 2.2rem;
+            color: var(--cream);
+        }
+
+        .countdown-text {
+            font-size: 0.9rem;
+            color: var(--text-soft);
+            text-transform: uppercase;
+        }
+
+        /* ===== НАША ИСТОРИЯ ===== */
+        .story-section {
+            position: relative;
+        }
+
+        .story-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            padding: 60px 40px;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .story-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, var(--dusty-rose), transparent);
+        }
+
+        .story-line-top {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: var(--cream);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .story-couple-photos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .story-photo-small {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .story-photo-small:hover {
+            transform: scale(1.05) rotate(3deg);
+            border-color: var(--dusty-rose);
+        }
+
+        .story-photo-small img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .story-union-line {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--cream);
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .story-union-line span {
+            color: var(--dusty-rose);
+            font-size: 4rem;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .story-line-bottom {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: var(--cream);
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .story-decoration {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .story-decoration i {
+            font-size: 2rem;
+            color: var(--text-soft);
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+
+        .story-decoration i:hover {
+            opacity: 1;
+            transform: scale(1.2) rotate(10deg);
+            color: var(--dusty-rose);
+        }
+
+        /* ===== СТИЛИ ДЛЯ КАЛЕНДАРЯ ===== */
+        .calendar-section {
+            position: relative;
+        }
+
+        .calendar-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .calendar-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .calendar-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .calendar-header h3 {
+            font-size: 2.5rem;
+            color: var(--cream);
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .calendar-header p {
+            font-size: 1.1rem;
+            color: var(--dusty-rose);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-soft);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--text-light);
+            border-radius: 50%;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .calendar-day.highlighted {
+            color: var(--cream);
+            font-weight: 700;
+            background: rgba(212, 165, 165, 0.3);
+            border: 1px solid var(--dusty-rose);
+            position: relative;
+        }
+
+        .calendar-day.highlighted::after {
+            content: '❤️';
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            font-size: 1rem;
+            animation: float-heart 2s ease-in-out infinite;
+        }
+
+        @keyframes float-heart {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(5deg); }
+        }
+
+        .calendar-note {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            border-left: 3px solid var(--dusty-rose);
+            border-right: 3px solid var(--cream);
+            max-width: 400px;
+        }
+
+        .calendar-note p {
+            color: var(--text-soft);
+        }
+
+        .calendar-note .date-large {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--cream);
+            margin: 10px 0;
+        }
+
+        .calendar-note i {
+            color: var(--dusty-rose);
+        }
+
+        .add-to-calendar {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .calendar-btn {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-light);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .calendar-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            border-color: var(--dusty-rose);
+        }
+
+        /* ===== СТИЛИ ДЛЯ ДРЕСС-КОДА - БЕЗ ФОНА ===== */
+        .dresscode-section {
+            position: relative;
+            padding: 60px 0;
+        }
+
+        .dresscode-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .dresscode-card {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .dresscode-intro {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            color: var(--text-soft);
+            font-style: italic;
+        }
+
+        .dresscode-highlight {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--cream);
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        /* Палитра цветов - прозрачная */
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            padding: 15px;
+            background: transparent;
+        }
+
+        .color-dot {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .color-dot:hover {
+            transform: scale(1.2);
+            border-color: var(--dusty-rose);
+        }
+
+        .color-dot.olive-deep { background-color: var(--olive-deep); }
+        .color-dot.olive { background-color: var(--olive); }
+        .color-dot.olive-light { background-color: var(--olive-light); }
+        .color-dot.sage { background-color: var(--sage); }
+        .color-dot.beige-medium { background-color: var(--beige-medium); }
+        .color-dot.beige-dark { background-color: var(--beige-dark); }
+        .color-dot.chocolate { background-color: var(--chocolate); }
+        .color-dot.dusty-rose { background-color: var(--dusty-rose); }
+        .color-dot.rose-soft { background-color: var(--rose-soft); }
+
+        .dresscode-photo-single {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .photo-frame-medium {
+            width: 500px;
+            max-width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border: 4px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .photo-frame-medium img {
+            width: 100%;
+            height: auto;
+            min-height: 300px;
+            max-height: 500px;
+            object-fit: cover;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .photo-frame-medium:hover img {
+            transform: scale(1.05);
+        }
+
+        /* ===== ПРОГРАММА ===== */
+        .program-section {
+            position: relative;
+        }
+
+        .program-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .curved-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .curved-svg {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .curved-path {
+            stroke: rgba(255, 255, 255, 0.3);
+            stroke-width: 4;
+            fill: none;
+            stroke-dasharray: 8 8;
+            stroke-linecap: round;
+            filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
+        }
+
+        .progress-marker-curved {
+            position: sticky;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--dusty-rose), var(--cream));
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            z-index: 20;
+            margin-left: -18px;
+            transition: all 0.3s ease;
+            animation: pulse-marker 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-marker {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(212, 165, 165, 0.5);
+                transform: translateY(-50%) scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 30px rgba(212, 165, 165, 0.8);
+                transform: translateY(-50%) scale(1.1);
+            }
+        }
+
+        .progress-marker-curved::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 18px;
+            height: 18px;
+            background: var(--white);
+            border-radius: 50%;
+        }
+
+        .timeline-curved {
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-item-curved {
+            display: flex;
+            align-items: center;
+            margin-bottom: 120px;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item-curved:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item-curved:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content-curved {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: calc(50% - 70px);
+            position: relative;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-content-curved:hover {
+            transform: scale(1.03) translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--dusty-rose);
+        }
+
+        .timeline-content-curved h3 {
+            font-size: 2rem;
+            color: var(--cream);
+            margin-bottom: 10px;
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .timeline-content-curved .time {
+            display: inline-block;
+            background: rgba(212, 165, 165, 0.2);
+            color: var(--text-light);
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            border: 1px solid rgba(212, 165, 165, 0.3);
+        }
+
+        .timeline-content-curved p {
+            font-size: 1rem;
+            color: var(--text-soft);
+            line-height: 1.8;
+        }
+
+        .timeline-marker-curved {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 3px solid var(--dusty-rose);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .timeline-item-curved:hover .timeline-marker-curved {
+            transform: translateX(-50%) scale(1.15);
+            border-color: var(--cream);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .timeline-marker-curved i {
+            font-size: 1.5rem;
+            color: var(--dusty-rose);
+            transition: var(--transition);
+        }
+
+        .timeline-item-curved:hover .timeline-marker-curved i {
+            color: var(--cream);
+            transform: scale(1.1);
+        }
+
+        .timeline-item-curved.active .timeline-content-curved {
+            border: 2px solid var(--dusty-rose);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-item-curved.active .timeline-marker-curved {
+            border-color: var(--cream);
+            transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 0 25px rgba(212, 165, 165, 0.5);
+        }
+
+        .timeline-item-curved.active .timeline-marker-curved i {
+            color: var(--cream);
+        }
+
+        /* RSVP */
+        #rsvp {
+            position: relative;
+        }
+
+        .rsvp-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-soft);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--dusty-rose);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group select option {
+            background: var(--olive-deep);
+            color: var(--text-light);
+        }
+
+        /* Подарки - БЕЗ ФОНА */
+        #gifts {
+            text-align: center;
+            position: relative;
+            padding: 60px 0;
+        }
+
+        .gifts-text {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            padding: 0 20px;
+        }
+
+        .gifts-text p {
+            color: var(--text-soft);
+            margin-bottom: 20px;
+        }
+
+        .gifts-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Подвал */
+        footer {
+            color: var(--text-soft);
+            padding: 50px 0 25px;
+            text-align: center;
+            position: relative;
+            background: rgba(0, 0, 0, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-love {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
+            color: var(--cream);
+            margin-bottom: 10px;
+        }
+
+        .footer-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: var(--dusty-rose);
+            margin-bottom: 20px;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            margin: 15px auto;
+            max-width: 600px;
+            font-size: 1.2rem;
+            color: var(--text-soft);
+            padding: 0 15px;
+        }
+
+        .copyright {
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Навигация */
+        .nav-toggle {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            color: var(--text-light);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-toggle:hover {
+            transform: scale(1.1) rotate(90deg);
+            background: rgba(212, 165, 165, 0.2);
+            border-color: var(--dusty-rose);
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background: rgba(90, 107, 74, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            padding: 80px 40px 40px;
+            transition: var(--transition);
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-menu.active {
+            right: 0;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-soft);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            color: var(--dusty-rose);
+            padding-left: 10px;
+            border-bottom-color: var(--dusty-rose);
+        }
+
+        /* Музыкальный контрол */
+        .music-control {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: var(--text-light);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .music-control:hover {
+            background: rgba(212, 165, 165, 0.2);
+            color: var(--cream);
+            transform: scale(1.1);
+            border-color: var(--dusty-rose);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .hero-names { font-size: 4.5rem; }
+            .hero-date { font-size: 2.8rem; }
+            .hero-date::before, .hero-date::after { font-size: 1.8rem; }
+            .section-title { font-size: 2.8rem; }
+            
+            .timeline-content-curved { 
+                width: calc(100% - 90px); 
+                margin-left: 80px !important;
+                padding: 20px;
+            }
+            .timeline-marker-curved { 
+                width: 50px; 
+                height: 50px; 
+                left: 30px;
+                transform: translateX(0);
+            }
+            .timeline-item-curved:nth-child(odd) .timeline-content-curved { 
+                margin-right: 0; 
+                margin-left: 80px; 
+            }
+            .timeline-item-curved:nth-child(even) .timeline-content-curved { 
+                margin-left: 80px; 
+            }
+            .timeline-item-curved:hover .timeline-marker-curved {
+                transform: translateX(0) scale(1.15);
+            }
+            .curved-line { 
+                left: 30px; 
+            }
+            .curved-svg {
+                left: 30px;
+                transform: translateX(0);
+                width: 40px;
+            }
+            
+            .rsvp-form { padding: 25px; }
+            .envelope { width: 320px; height: 240px; }
+            .envelope-flap { border-left-width: 160px; border-right-width: 160px; border-top-width: 90px; }
+            .story-couple-photos { gap: 20px; }
+            .story-photo-small { width: 140px; height: 140px; }
+            .story-line-top, .story-line-bottom { font-size: 2.2rem; }
+            .story-union-line { font-size: 3rem; }
+            
+            .footer-love { font-size: 2.8rem; }
+            .footer-names { font-size: 2.2rem; }
+            .footer-quote { font-size: 1rem; }
+            
+            .photo-frame-medium { width: 100%; }
+            .photo-frame-medium img { 
+                min-height: 250px;
+                max-height: 400px;
+                object-fit: contain;
+                background: transparent;
+            }
+
+            .hero-names-block {
+                margin-bottom: 20px;
+                width: 90%;
+            }
+        }
+
+/* Эффект параллакса с размытием и затемнением */
+#hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    padding: 0 0 30px 0;
+    background: url('images/my0.jpg') no-repeat center center/cover;
+    background-attachment: fixed;
+    background-position: center 45%;
+    background-size: cover;
+    transition: filter 0.3s ease;
+}
+
+/* Слой с размытием */
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-position: center 45%;
+    filter: blur(10px) brightness(0.7);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Затемняющий градиентный слой */
+#hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--olive-deep), var(--olive));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Контент поверх всего */
+#hero .hero-names-block {
+    position: relative;
+    z-index: 3;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+    </style>
+</head>
+<body>
+    <!-- КОНВЕРТ -->
+    <div class="envelope-wrapper" id="envelopeWrapper">
+        <div class="envelope" id="envelope">
+            <div class="envelope-decoration">
+                <i class="fas fa-leaf"></i>
+                <i class="fas fa-leaf"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+            </div>
+            <div class="envelope-flap"></div>
+            <div class="envelope-body">
+                <div class="envelope-mask"></div>
+            </div>
+            <div class="envelope-content">
+                <h3>ВЫ ПРИГЛАШЕНЫ</h3>
+                <p>на свадьбу</p>
+                <p class="open-text"><i class="fas fa-chevron-down"></i> Открыть конверт <i class="fas fa-chevron-down"></i></p>
+            </div>
+            <div class="letter-preview">
+                <div class="invitation-badge">Приглашение</div>
+                <h4>Дорогие гости!</h4>
+                <p>Вы не просто так получили это приглашение! В особенный для нас день мы очень хотим, чтобы вы были рядом <span class="small-heart">❤️</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="main-content blurred" id="mainContent">
+        <div class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <nav class="nav-menu" id="navMenu">
+            <a href="#hero">Главная</a>
+            <a href="#story">Наша история</a>
+            <a href="#program">Программа дня</a>
+            <a href="#dresscode">Дресс-код</a>
+            <a href="#calendar">Сохраните дату</a>
+            <a href="#rsvp">Подтверждение</a>
+            <a href="#gifts">Подарки</a>
+        </nav>
+
+        <div class="music-control" id="musicControl">
+            <i class="fas fa-music"></i>
+            <audio id="bgMusic" loop>
+                <source src="https://music.yandex.ru/album/36693816/track/139324024?utm_source=web&utm_medium=copy_link" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <!-- Главная - только фото с надписями внизу (без фона) -->
+        <section id="hero">
+            <div class="hero-names-block">
+                <div class="hero-names">Алиса & Павел</div>
+                <div class="hero-date">06.06.2026</div>
+            </div>
+        </section> 
+
+        <!-- История -->
+        <section id="story" class="story-section">
+            <div class="container">
+                <div class="story-container">
+                    <div class="story-card">
+                        <div class="story-line-top">
+                            Эти ангелочки и не догадывались,
+                        </div>
+                        
+                        <div class="story-couple-photos">
+                            <div class="story-photo-small">
+                                <img src="images/a1.jpg" alt="Алиса">
+                            </div>
+                            <div class="story-photo-small">
+                                <img src="images/pa.JPG" alt="Павел">
+                            </div>
+                        </div>
+                        
+                        <div class="story-union-line">
+                            Алиса + Павел = <span>❤️</span>
+                        </div>
+                        
+                        <div class="story-line-bottom">
+                            что однажды обменяются кольцами!
+                        </div>
+
+                        <!-- Отсчет времени здесь -->
+                        <div class="countdown-section">
+                            <div class="countdown-label">
+                                <i class="fas fa-heart"></i> Мы скажем "да" через... <i class="fas fa-heart"></i>
+                            </div>
+                            <div id="countdown">
+                                <div class="countdown-box"><span class="countdown-number" id="days">000</span><span class="countdown-text">дней</span></div>
+                                <div class="countdown-box"><span class="countdown-number" id="hours">00</span><span class="countdown-text">часов</span></div>
+                                <div class="countdown-box"><span class="countdown-number" id="minutes">00</span><span class="countdown-text">минут</span></div>
+                                <div class="countdown-box"><span class="countdown-number" id="seconds">00</span><span class="countdown-text">секунд</span></div>
+                            </div>
+                        </div>
+                        
+                        <div class="story-decoration">
+                            <i class="fas fa-ring"></i>
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-ring"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ПРОГРАММА -->
+        <section id="program" class="program-section">
+            <div class="container">
+                <h2 class="section-title">Программа дня</h2>
+                
+                <div class="program-container">
+                    <!-- Изогнутая линия -->
+                    <div class="curved-line">
+                        <svg class="curved-svg" preserveAspectRatio="none" viewBox="0 0 60 1000">
+                            <path class="curved-path" d="M30,0 
+                                     C40,100 20,200 30,300 
+                                     C40,400 20,500 30,600 
+                                     C40,700 20,800 30,900 
+                                     C40,950 20,1000 30,1000" 
+                                  vector-effect="non-scaling-stroke"/>
+                        </svg>
+                        <div class="progress-marker-curved" id="progressMarker"></div>
+                    </div>
+                    
+                    <!-- Таймлайн -->
+                    <div class="timeline-curved">
+                        <!-- Выкуп -->
+                        <div class="timeline-item-curved">
+                            <div class="timeline-content-curved">
+                                <h3>Выкуп невесты</h3>
+                                <span class="time">12:00</span>
+                                <p>Традиционный и веселый выкуп невесты. Ждем жениха с подарками и хорошим настроением!</p>
+                            </div>
+                            <div class="timeline-marker-curved">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Регистрация -->
+                        <div class="timeline-item-curved">
+                            <div class="timeline-content-curved">
+                                <h3>Торжественная регистрация</h3>
+                                <span class="time">14:00</span>
+                                <p>Главное событие дня - церемония бракосочетания в окружении ваших улыбок.</p>
+                            </div>
+                            <div class="timeline-marker-curved">
+                                <i class="fas fa-ring"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Прогулка -->
+                        <div class="timeline-item-curved">
+                            <div class="timeline-content-curved">
+                                <h3>Прогулка и фотосессия</h3>
+                                <span class="time">15:00</span>
+                                <p>Совместная прогулка по живописным местам и фотосессия с гостями на фоне природы.</p>
+                            </div>
+                            <div class="timeline-marker-curved">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Банкет -->
+                        <div class="timeline-item-curved">
+                            <div class="timeline-content-curved">
+                                <h3>Наполним бокалы</h3>
+                                <span class="time">16:00</span>
+                                <p>Звон бокалов, искренние тосты и изысканный ужин. Время разделить радость за праздничным столом!</p>
+                            </div>
+                            <div class="timeline-marker-curved">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Торт и танцы -->
+                        <div class="timeline-item-curved">
+                            <div class="timeline-content-curved">
+                                <h3>Торт & Танцы</h3>
+                                <span class="time">21:00</span>
+                                <p>Разрезание свадебного торта и начало танцевальной программы. Зажигайте вместе с нами!</p>
+                            </div>
+                            <div class="timeline-marker-curved">
+                                <i class="fas fa-cake-candles"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Завершение -->
+                        <div class="timeline-item-curved">
+                            <div class="timeline-content-curved">
+                                <h3>Завершение вечера</h3>
+                                <span class="time">22:00</span>
+                                <p>Красивое завершение праздника. Благодарим всех гостей за этот чудесный день!</p>
+                            </div>
+                            <div class="timeline-marker-curved">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ДРЕСС-КОД - БЕЗ ФОНА -->
+        <section id="dresscode" class="dresscode-section">
+            <div class="container">
+                <h2 class="section-title">Дресс-код</h2>
+                <div class="dresscode-container">
+                    <div class="dresscode-card">
+                        <div class="dresscode-intro">
+                            Для нас самое главное - ваше присутствие!
+                        </div>
+                        
+                        <div class="dresscode-highlight">
+                            Но мы будем очень признательны, если вы поддержите цветовую гамму спокойных природных оттенков
+                        </div>
+
+                        <!-- Палитра цветов - без фона -->
+                        <div class="color-palette">
+                            <div class="color-dot olive-deep"></div>
+                            <div class="color-dot olive"></div>
+                            <div class="color-dot olive-light"></div>
+                            <div class="color-dot sage"></div>
+                            <div class="color-dot beige-medium"></div>
+                            <div class="color-dot beige-dark"></div>
+                            <div class="color-dot chocolate"></div>
+                            <div class="color-dot dusty-rose"></div>
+                            <div class="color-dot rose-soft"></div>
+                        </div>
+
+                        <!-- Фото -->
+                        <div class="dresscode-photo-single">
+                            <div class="photo-frame-medium">
+                                <img src="images/dresscode.jpg" alt="Примеры образов">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Календарь -->
+        <section id="calendar" class="calendar-section">
+            <div class="container">
+                <h2 class="section-title">Сохраните дату</h2>
+                <div class="calendar-container">
+                    <div class="calendar-card">
+                        <div class="calendar-header">
+                            <h3>Июнь 2026</h3>
+                            <p>Лето · Месяц нашей любви</p>
+                        </div>
+                        <div class="calendar-weekdays">
+                            <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
+                        </div>
+                        <div class="calendar-days" id="calendarDays"></div>
+                        <div class="add-to-calendar">
+                            <a href="#" class="calendar-btn" onclick="addToGoogleCalendar()"><i class="fab fa-google"></i> Google Календарь</a>
+                            <a href="#" class="calendar-btn" onclick="downloadICS()"><i class="fas fa-calendar-plus"></i> Сохранить</a>
+                        </div>
+                    </div>
+                    
+                    <div class="calendar-note">
+                        <i class="fas fa-heart" style="color: var(--dusty-rose);"></i>
+                        <p>Обведите эту дату в своих календарях</p>
+                        <div class="date-large">6 Июня 2026</div>
+                        <p><i class="fas fa-clock"></i> Начало в 14:00</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Дворец бракосочетания</p>
+                        <div style="margin-top: 15px;">
+                            <i class="fas fa-leaf"></i>
+                            <i class="fas fa-heart" style="color: var(--dusty-rose); margin: 0 5px;"></i>
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Подтверждение -->
+        <section id="rsvp">
+            <div class="container">
+                <h2 class="section-title">Подтвердите присутствие</h2>
+                <div class="rsvp-form">
+                    <form id="weddingForm">
+                        <div class="form-group">
+                            <label for="name">Ваше имя и фамилия *</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Количество гостей *</label>
+                            <select id="guests" required>
+                                <option value="" disabled selected>Выберите количество</option>
+                                <option value="1">1 (только я)</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4 и более</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="attendance">Вы сможете присутствовать? *</label>
+                            <select id="attendance" required>
+                                <option value="" disabled selected>Выберите ответ</option>
+                                <option value="yes">Да, с радостью!</option>
+                                <option value="no">К сожалению, не смогу</option>
+                                <option value="unsure">Пока не уверен(а)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="preferences">Пищевые предпочтения / аллергии</label>
+                            <textarea id="preferences" rows="3" placeholder="Например: вегетарианское меню, аллергия на орехи..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-rose" style="width: 100%;">Отправить ответ</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Подарки - БЕЗ ФОНА -->
+        <section id="gifts">
+            <div class="container">
+                <h2 class="section-title">Подарки</h2>
+                <div class="gifts-text">
+                    <p>Для нас самый дорогой подарок — это ваши улыбки и присутствие в этот день.</p>
+                    <p>Если вы захотите помочь нам наполнить семейную копилку, будем благодарны от всего сердца. Конверты можно будет передать нам лично во время поздравлений!</p>
+                    <p>А если вы задумали сюрприз и хотите подарить что-то конкретное — просто спросите у наших родителей, они точно знают наши мечты.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Подвал -->
+        <footer>
+            <div class="container">
+                <div class="footer-love">С любовью,</div>
+                <div class="footer-names">Алиса и Павел</div>
+                <div class="footer-quote">
+                    Мы будем рады создать вместе с вами начало нашей вечной истории!
+                </div>
+                <div class="copyright">
+                    <p>© Алиса & Павел 2026</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Таймер
+        function updateCountdown() {
+            const weddingDate = new Date('June 6, 2026 12:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = weddingDate - now;
+            
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(3, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Календарь
+        function generateCalendar() {
+            const year = 2026;
+            const month = 5;
+            const weddingDay = 6;
+            
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            
+            let startingDay = firstDay.getDay();
+            startingDay = startingDay === 0 ? 6 : startingDay - 1;
+            
+            const totalDays = lastDay.getDate();
+            const calendarDays = document.getElementById('calendarDays');
+            if (!calendarDays) return;
+            
+            calendarDays.innerHTML = '';
+            
+            for (let i = 0; i < startingDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day empty';
+                calendarDays.appendChild(emptyDay);
+            }
+            
+            for (let day = 1; day <= totalDays; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                if (day === weddingDay) {
+                    dayElement.classList.add('highlighted');
+                    dayElement.textContent = day;
+                } else {
+                    dayElement.textContent = day;
+                }
+                calendarDays.appendChild(dayElement);
+            }
+        }
+
+        // Google Calendar
+        function addToGoogleCalendar() {
+            const event = {
+                title: 'Свадьба Алисы и Павла',
+                description: 'Дорогие гости, ждем вас на нашем празднике! Торжественная регистрация в 14:00 в Алатырском дворце бракосочетания.',
+                location: 'Отдел ЗАГС администрации города Алатырь Чувашской республике, Комиссариатская ул., 40А',
+                startDate: '20260606T090000Z',
+                endDate: '20260606T190000Z'
+            };
+            const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.location)}&dates=${event.startDate}/${event.endDate}`;
+            window.open(url, '_blank');
+        }
+
+        // ICS файл
+        function downloadICS() {
+            const event = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Alice & Pavel Wedding//EN
+BEGIN:VEVENT
+UID:${new Date().getTime()}@aliceandpavel.com
+DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z
+DTSTART:20260606T090000Z
+DTEND:20260606T190000Z
+SUMMARY:Свадьба Алисы и Павла
+DESCRIPTION:Дорогие гости\, ждем вас на нашем празднике! Торжественная регистрация в 14:00 в Алатырском дворце бракосочетания
+LOCATION:Отдел ЗАГС администрации города Алатырь Чувашской республики\, Комиссариатская ул.\, 40А
+END:VEVENT
+END:VCALENDAR`;
+            
+            const blob = new Blob([event], { type: 'text/calendar' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'alice-pavel-wedding.ics';
+            link.click();
+        }
+
+        // Навигация
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Музыка
+        const musicControl = document.getElementById('musicControl');
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+        
+        musicControl.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicControl.innerHTML = '<i class="fas fa-music"></i>';
+                musicControl.title = 'Включить музыку';
+            } else {
+                bgMusic.play().catch(e => {
+                    console.log("Автовоспроизведение заблокировано");
+                    musicControl.innerHTML = '<i class="fas fa-play"></i>';
+                });
+                musicControl.innerHTML = '<i class="fas fa-pause"></i>';
+                musicControl.title = 'Выключить музыку';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Форма
+        // Форма с отправкой в Telegram и персонализированным сообщением
+
+        const weddingForm = document.getElementById('weddingForm');
+        if (weddingForm) {
+            weddingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const name = document.getElementById('name').value;
+                const guests = document.getElementById('guests').value;
+                const attendance = document.getElementById('attendance').value;
+                const preferences = document.getElementById('preferences').value;
+
+                let attendanceText = '';
+                if (attendance === 'yes') attendanceText = 'Да, с радостью! 🎉';
+                else if (attendance === 'no') attendanceText = 'К сожалению, не смогу 😔';
+                else if (attendance === 'unsure') attendanceText = 'Пока не уверен(а) 🤔';
+
+                const message = `🎉 <b>Новый ответ на приглашение!</b>\n\n` +
+                                `👤 <b>Имя:</b> ${name}\n` +
+                                `👥 <b>Гостей:</b> ${guests}\n` +
+                                `✅ <b>Присутствие:</b> ${attendanceText}\n` +
+                                `📝 <b>Пожелания по еде:</b> ${preferences || 'Не указано'}`;
+
+                // ⚠️ ЗАМЕНИТЕ ЗНАЧЕНИЯ НИЖЕ НА СВОИ
+                const token = '8709150751:AAE6V_yt0qSWuCzPwFiiZWRaetzRkP_V1R0';
+                const chat_id = '1460418534';
+                // ⚠️ КОНЕЦ НАСТРОЕК
+
+                const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+                fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: chat_id,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok) {
+                        // 👇 ПЕРСОНАЛИЗИРОВАННОЕ СООБЩЕНИЕ С ИМЕНЕМ
+                        alert(`Спасибо, ${name}! Ваш ответ отправлен.`);
+                        weddingForm.reset();
+                    } else {
+                        alert('Ошибка при отправке. Попробуйте позже или свяжитесь с нами напрямую.');
+                    }
+                })
+                .catch(error => {
+                    alert('Ошибка при отправке. Проверьте подключение к интернету.');
+                });
+            });
+        }
+
+        // Плавное появление
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('section > .container, .hero-names-block').forEach(container => {
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(30px)';
+            container.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(container);
+        });
+
+        // Ползунок для программы
+        const programSection = document.getElementById('program');
+        const progressMarker = document.getElementById('progressMarker');
+        const timelineItems = document.querySelectorAll('.timeline-item-curved');
+        
+        function updateProgressMarker() {
+            if (!programSection || !progressMarker) return;
+            
+            const sectionRect = programSection.getBoundingClientRect();
+            const sectionTop = sectionRect.top;
+            const sectionHeight = sectionRect.height;
+            const windowHeight = window.innerHeight;
+            
+            let progress = (windowHeight / 2 - sectionTop) / (sectionHeight);
+            progress = Math.max(0, Math.min(1, progress));
+            
+            const markerTop = progress * 100;
+            progressMarker.style.top = markerTop + '%';
+            
+            let closestIndex = -1;
+            let closestDistance = Infinity;
+            
+            timelineItems.forEach((item, index) => {
+                const itemRect = item.getBoundingClientRect();
+                const itemCenter = itemRect.top + itemRect.height / 2;
+                const windowCenter = windowHeight / 2;
+                const distance = Math.abs(itemCenter - windowCenter);
+                
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestIndex = index;
+                }
+                
+                item.classList.remove('active');
+            });
+            
+            if (closestIndex !== -1 && closestDistance < 250) {
+                timelineItems[closestIndex].classList.add('active');
+            }
+        }
+
+        window.addEventListener('scroll', updateProgressMarker);
+        window.addEventListener('resize', updateProgressMarker);
+
+        // Конверт
+        const envelopeWrapper = document.getElementById('envelopeWrapper');
+        const envelope = document.getElementById('envelope');
+        const mainContent = document.getElementById('mainContent');
+
+        function openEnvelope() {
+            envelope.classList.add('open');
+            setTimeout(() => {
+                envelopeWrapper.classList.add('hidden');
+                mainContent.classList.remove('blurred');
+                window.scrollTo(0, 0);
+                generateCalendar();
+                setTimeout(updateProgressMarker, 100);
+            }, 800);
+        }
+
+        envelope.addEventListener('click', openEnvelope);
+        envelope.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openEnvelope();
+            }
+        });
+        envelope.setAttribute('tabindex', '0');
+        envelope.setAttribute('role', 'button');
+        envelope.setAttribute('aria-label', 'Открыть приглашение');
+
+        document.body.style.overflow = 'hidden';
+
+        envelopeWrapper.addEventListener('transitionend', (e) => {
+            if (e.target.classList.contains('envelope-wrapper') && e.target.classList.contains('hidden')) {
+                document.body.style.overflow = '';
+            }
+        });
+
+        window.addEventListener('load', () => {
+            if (!envelopeWrapper.classList.contains('hidden')) {
+                return;
+            }
+            generateCalendar();
+            updateProgressMarker();
+        });
+
+// Эффект параллакса с размытием
+const hero = document.getElementById('hero');
+const heroSection = document.querySelector('#hero');
+
+window.addEventListener('scroll', () => {
+    const heroRect = heroSection.getBoundingClientRect();
+    const heroBottom = heroRect.bottom;
+    const windowHeight = window.innerHeight;
+    
+    // Прогресс прокрутки (0 - фото видно полностью, 1 - фото почти скрыто)
+    let scrollProgress = 1 - (heroBottom / windowHeight);
+    scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+    
+    // Применяем эффекты к разным слоям
+    heroSection.style.setProperty('--scroll-progress', scrollProgress);
+    
+    // Двигаем фон для эффекта параллакса
+    const yOffset = scrollProgress * 100;
+    heroSection.style.backgroundPosition = `center 45% ${yOffset}px`;
+    
+    // Затемняем контент
+    const heroContent = heroSection.querySelector('.hero-names-block');
+    if (heroContent) {
+        heroContent.style.opacity = 1 - scrollProgress;
+        heroContent.style.transform = `translateY(${scrollProgress * 50}px)`;
+    }
+});
+
+// Добавляем CSS-переменные
+const style = document.createElement('style');
+style.textContent = `
+    #hero::before {
+        opacity: var(--scroll-progress, 0);
+    }
+    #hero::after {
+        opacity: calc(var(--scroll-progress, 0) * 0.8);
+    }
+`;
+document.head.appendChild(style);
+    </script>
+</body>
+</html>
