@@ -1342,7 +1342,7 @@
     position: relative;
     padding: 0 0 30px 0;
     background: url('images/my0.jpg') no-repeat center center/cover;
-    background-attachment: fixed;
+    background-attachment: fixed !important;
     background-position: center 45%;
     background-size: cover;
     transition: filter 0.3s ease;
@@ -1351,7 +1351,7 @@
 /* Слой с размытием */
 #hero::before {
     content: '';
-    position: absolute;
+    position: absolute !important;
     top: 0;
     left: 0;
     width: 100%;
@@ -1368,7 +1368,7 @@
 /* Затемняющий градиентный слой */
 #hero::after {
     content: '';
-    position: absolute;
+    position: absolute !important;
     top: 0;
     left: 0;
     width: 100%;
@@ -1382,7 +1382,7 @@
 
 /* Контент поверх всего */
 #hero .hero-names-block {
-    position: relative;
+    position: relative !important;
     z-index: 3;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
